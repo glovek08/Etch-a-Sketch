@@ -2,6 +2,7 @@
     --gray-1: #36382E; /* black olive */
     --white-1: #DADAD9; /* platinum */
     --accent-red: #FF3C38; /* vermillion */
+    --squares-bg: #d8a841;
 }
 *, *::after, *::before {
     box-sizing: border-box;
@@ -22,5 +23,20 @@ main {
     min-height: 100dvh;
     margin: 40px;
     outline: 2px solid #404238;
+    border-radius: 10px;
+}
+#flex-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-wrap: wrap;
+    outline: 1px solid yellow;
+    padding: 20px;
+    gap: 20px;
+}
+.flex-square {
+    width: 20%;
+    aspect-ratio: 1/1;
+    background: var(--squares-bg);
     border-radius: 10px;
 }
