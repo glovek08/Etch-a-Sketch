@@ -27,6 +27,8 @@ main {
 }
 #flex-container {
     display: flex;
+    width: 100%;
+    height: 900px;
     justify-content: center;
     align-items: center;
     flex-wrap: wrap;
@@ -35,8 +37,11 @@ main {
     gap: 20px;
 }
 .flex-square {
-    width: 20%;
+    width: 11%;
     aspect-ratio: 1/1;
     background: var(--squares-bg);
-    border-radius: 10px;
+    border-radius: 5%;
+}
+.flex-square:hover {
+    background: var(--accent-red);
 }
