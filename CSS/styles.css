@@ -1,0 +1,26 @@
+:root {
+    --gray-1: #36382E; /* black olive */
+    --white-1: #DADAD9; /* platinum */
+    --accent-red: #FF3C38; /* vermillion */
+}
+*, *::after, *::before {
+    box-sizing: border-box;
+}
+img {
+    display: block;
+}
+body {
+    margin: 0;
+    padding: 0;
+    background: var(--gray-1);
+}
+header, main, footer {
+    max-width: 100dvw;
+}
+main {
+    background: var(--gray-1);
+    min-height: 100dvh;
+    margin: 40px;
+    outline: 2px solid #404238;
+    border-radius: 10px;
+}
