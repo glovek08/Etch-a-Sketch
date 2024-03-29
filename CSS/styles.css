@@ -42,7 +42,8 @@ main {
     background: var(--squares-bg);
     border-radius: 5%;
     cursor: pointer;
+    transition: .5s;
 }
-.flex-square:hover {
+.red-bg {
     background: var(--accent-red);
 }
