@@ -1,10 +1,14 @@
+const squaresContainer = document.querySelector('#flex-container');
 
+createSquare(0);
 
-document.addEventListener('DOMContentLoaded', () => {
-    const squaresContainer = document.querySelector('#flex-container');
-    for (let i = 0; i < 256; i++) {
+function createSquare(i) {
+    if (i < 256) {
         let square = document.createElement('div');
         square.classList.add('flex-square');
         squaresContainer.appendChild(square);
+        console.log('calling crateSquare with'+i);
+        createSquare(i + 1);
     }
-});
+    return;
+}
