@@ -50,10 +50,24 @@ document.addEventListener('click', (e) => {
 function createSquares(i, width) {
     if (i < width * width) {
         const square = document.createElement('div');
+        square.id = i;
         square.classList.add('flex-square');
         square.addEventListener('mouseover', (e) => {
+            console.log(`Square#${i} hovered`);
             e.target.classList.add('red-bg');
+            let currentOpacity = parseFloat(e.target.style.opacity);
+            console.log(`Square#${square.id} opacity = ${currentOpacity}`);
+            if (isNaN(currentOpacity))  {
+                e.target.style.opacity = 1;
+            }
+            else if (currentOpacity > 0) {
+                currentOpacity -= 0.35;
+            } else if (currentOpacity <= 0) {
+                currentOpacity = 0;
+            }
+            e.target.style.opacity = currentOpacity;
         });
+
         squaresContainer.appendChild(square);
         createSquares(i + 1, width);
     } else {
