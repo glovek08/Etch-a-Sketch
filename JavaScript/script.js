@@ -1,31 +1,51 @@
 const squaresContainer = document.querySelector('#grid-container');
-const resetGridBtn = document.querySelector('#reset-grid-btn');
 const popup = document.querySelector('#popup-text-span');
-const showPopupBtn = document.querySelector('#show-popup');
-const newGridSubmitBtn = document.querySelector('#submit-new-grid');
-const newGridCancelBtn = document.querySelector('#cancel-new-grid');
 const DEFAULT_BG = '#FF3C38'; // Vermillion.
 
 
 createSquares(0, 8); //Initialize with 0 and 8
 
-resetGridBtn.addEventListener('click', () => resetGrid());
-showPopupBtn.addEventListener('click', () => newGridPopup(true));
+document.addEventListener('click', (e) => {
+    let target = e.target;
+    switch (target.id) {
+        case 'reset-grid-btn':
+            resetGrid();
+            break;
+        case 'show-popup':
+            newGridPopup(true);
+            break;
+        case 'submit-new-grid':
+            const userInputWidth = document.querySelector('#grid-width').value;
+            console.log(`User Input Width: ${userInputWidth}, --grid-width: ${getComputedStyle(document.documentElement).getPropertyValue('--grid-width')}`);
+            document.documentElement.style.setProperty('--grid-width', userInputWidth);
+            console.log(`--grid-width now: ${getComputedStyle(document.documentElement).getPropertyValue('--grid-width')}`);
+            deleteGrid();
+            createSquares(0, userInputWidth);
+            newGridPopup(false);
+            break;
+        case 'cancel-new-grid':
+            newGridPopup(0);
+            document.querySelector('#grid-width').value = '';
+            break;
+    }
+})
+// resetGridBtn.addEventListener('click', () => resetGrid());
+// showPopupBtn.addEventListener('click', () => newGridPopup(true));
 
-newGridSubmitBtn.addEventListener('click', () => {
-    const userInputWidth = document.querySelector('#grid-width').value;
-    console.log(`User Input Width: ${userInputWidth}, --grid-width: ${getComputedStyle(document.documentElement).getPropertyValue('--grid-width')}`);
-    document.documentElement.style.setProperty('--grid-width', userInputWidth);
-    console.log(`--grid-width now: ${getComputedStyle(document.documentElement).getPropertyValue('--grid-width')}`);
-    deleteGrid();
-    createSquares(0, userInputWidth);
-    newGridPopup(false);
-});
+// newGridSubmitBtn.addEventListener('click', () => {
+//     const userInputWidth = document.querySelector('#grid-width').value;
+//     console.log(`User Input Width: ${userInputWidth}, --grid-width: ${getComputedStyle(document.documentElement).getPropertyValue('--grid-width')}`);
+//     document.documentElement.style.setProperty('--grid-width', userInputWidth);
+//     console.log(`--grid-width now: ${getComputedStyle(document.documentElement).getPropertyValue('--grid-width')}`);
+//     deleteGrid();
+//     createSquares(0, userInputWidth);
+//     newGridPopup(false);
+// });
 
-newGridCancelBtn.addEventListener('click', () => {
-    newGridPopup(0);
-    document.querySelector('#grid-width').value = '';
-});
+// newGridCancelBtn.addEventListener('click', () => {
+//     newGridPopup(0);
+//     document.querySelector('#grid-width').value = '';
+// });
 
 function createSquares(i, width) {
     if (i < width * width) {
@@ -45,12 +65,12 @@ function createSquares(i, width) {
 function newGridPopup(option) { //true to show, false to hide.
     if (option) {
         popup.classList.add("show");
-        console.log('Popup show');  
+        console.log('Popup show');
     }
     else {
         popup.classList.remove("show");
         console.log('Popup hide');
-    } 
+    }
     //Could use event to hide when mouse is out.
 }
 function deleteGrid() {
