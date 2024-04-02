@@ -1,8 +1,9 @@
 const squaresContainer = document.querySelector('#grid-container');
 const resetGridBtn = document.querySelector('#reset-grid-btn');
-const newGridSubmitBtn = document.querySelector('#submit-new-grid');
 const popup = document.querySelector('#popup-text-span');
 const showPopupBtn = document.querySelector('#show-popup');
+const newGridSubmitBtn = document.querySelector('#submit-new-grid');
+const newGridCancelBtn = document.querySelector('#cancel-new-grid');
 const DEFAULT_BG = '#FF3C38'; // Vermillion.
 
 
@@ -19,6 +20,11 @@ newGridSubmitBtn.addEventListener('click', () => {
     deleteGrid();
     createSquares(0, userInputWidth);
     newGridPopup(false);
+});
+
+newGridCancelBtn.addEventListener('click', () => {
+    newGridPopup(0);
+    document.querySelector('#grid-width').value = '';
 });
 
 function createSquares(i, width) {

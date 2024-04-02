@@ -69,8 +69,8 @@ main {
     display: flex;
     justify-content: center;
     align-items: center;
-    width: 800px;
-    height: 800px;
+    width: 600px;
+    height: 600px;
     height: 100%;
     gap: 2px;
     flex-wrap: wrap;
@@ -93,11 +93,23 @@ main {
     padding: 20px;
     position: absolute;
     z-index: 1;
-    bottom: -450%;
-    left: 20%;
+    bottom: -11rem;
+    left: -8.7rem;
     margin-left: -80px;
 }
-
+#popup-text-span {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    gap: 10px;
+    min-width: 300px;
+}
+#grid-width {
+    text-align: center;
+    font-size: 1.2em;
+    width: 40%;
+}
 /* Popup arrow */
 #new-grid-popup .popup-text::after {
     content: "";
@@ -109,13 +121,22 @@ main {
     border-style: solid;
     border-color:  transparent transparent var(--white-1) transparent;
 }
-
+#grid-popup-btn-container {
+    outline: 1px solid red;
+    width: 100%;
+}
 #new-grid-popup .show {
     visibility: visible;
     -webkit-animation: fadeIn 1s;
     animation: fadeIn 1s
 }
-
+#cancel-new-grid {
+    background: rgb(209, 55, 55);
+    color: white;
+}
+#cancel-new-grid:hover {
+    background: rgb(168, 49, 49);
+}
 .red-bg {
     background: var(--accent-red);
 }
