@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en-US">
+
 <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
@@ -7,20 +8,27 @@
     <link rel="stylesheet" type="text/css" href="CSS/styles.css" />
     <script src="JavaScript/script.js" defer></script>
 </head>
+
 <body>
     <header>
 
     </header>
     <main>
         <div id="flex-container">
+            <button id="reset-grid-btn" class="button">RESET GRID</button>
+            <div id="new-grid-popup" class="button">NEW GRID
+                <span class="popup-text" id="popup-text-span">ENTER NEW GRID
+                    <input type="number" id="grid-width" min="1" max="100" />
+                    <button id="submit-new-grid" class="button">SUBMIT</button>
+                </span>
+            </div>
         </div>
-        <div id="buttons-container">
-            <button id="reset-grid-btn">RESET GRID</button>
-            <button id="create-grid-btn">NEW GRID</button>
+        <div id="grid-container">
         </div>
     </main>
     <footer>
 
     </footer>
 </body>
+
 </html>
