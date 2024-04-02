@@ -2,14 +2,14 @@ const squaresContainer = document.querySelector('#grid-container');
 const resetGridBtn = document.querySelector('#reset-grid-btn');
 const newGridSubmitBtn = document.querySelector('#submit-new-grid');
 const popup = document.querySelector('#popup-text-span');
-const test = document.querySelector('#test');
+const showPopupBtn = document.querySelector('#show-popup');
 const DEFAULT_BG = '#FF3C38'; // Vermillion.
 
 
 createSquares(0, 8); //Initialize with 0 and 8
 
 resetGridBtn.addEventListener('click', () => resetGrid());
-test.addEventListener('click', () => newGridPopup(true));
+showPopupBtn.addEventListener('click', () => newGridPopup(true));
 
 newGridSubmitBtn.addEventListener('click', () => {
     const userInputWidth = document.querySelector('#grid-width').value;
@@ -22,7 +22,7 @@ newGridSubmitBtn.addEventListener('click', () => {
 });
 
 function createSquares(i, width) {
-    if (i < Math.pow(width, 2)) {
+    if (i < width * width) {
         const square = document.createElement('div');
         square.classList.add('flex-square');
         square.addEventListener('mouseover', (e) => {
@@ -30,9 +30,10 @@ function createSquares(i, width) {
         });
         squaresContainer.appendChild(square);
         createSquares(i + 1, width);
+    } else {
+        console.log(`Grid Created, Size: ${Math.pow(width, 2)}`);
+        return;
     }
-    console.log(`Grid Created, Size: ${Math.pow(width, 2)}`);
-    return;
 }
 
 function newGridPopup(option) { //true to show, false to hide.
