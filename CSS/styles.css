@@ -3,8 +3,9 @@
     --gray-2: #4b4b4b;
     --white-1: #DADAD9; /* platinum */
     --accent-red: #FF3C38; /* vermillion */
-    --accent-yellow: #e9cb69;
-    --squares-bg: #d8a841;
+    --accent-yellow: #e9cb69; 
+    --checked: #97fc97;
+    --squares-bg: #d8a841; /* mustard-yellow-1 */
     --grid-width: 8;
 }
 
@@ -137,8 +138,14 @@ main {
 #cancel-new-grid:hover {
     background: rgb(168, 49, 49);
 }
-.red-bg {
-    background: var(--accent-red);
+#random-mode-checkbox {
+    display: none;
+/*     
+    width: 0;
+    position: relative;
+    left: -300%; 
+    uncomment if you can't check.
+    */
 }
 .button {
     border: none;
@@ -154,7 +161,7 @@ main {
 .button:active {
     background: var(--accent-red);
 }
-/* Add animation (fade in the popup) */
+/* Popup fade animation */
 @-webkit-keyframes fadeIn {
     from {
         opacity: 0;

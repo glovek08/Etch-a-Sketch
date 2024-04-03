@@ -1,6 +1,10 @@
 const squaresContainer = document.querySelector('#grid-container');
 const popup = document.querySelector('#popup-text-span');
-const DEFAULT_BG = '#FF3C38'; // Vermillion.
+const randomModeCheckbox = document.querySelector('#random-mode-checkbox');
+const randomModeLabel = document.querySelector('#random-mode-label');
+
+const DEFAULT_BG = '#d8a841';
+const DEFAULT_HOVER_BG = '#FF3C38'; // Vermillion.
 
 
 createSquares(0, 8); //Initialize with 0 and 8
@@ -29,23 +33,15 @@ document.addEventListener('click', (e) => {
             break;
     }
 })
-// resetGridBtn.addEventListener('click', () => resetGrid());
-// showPopupBtn.addEventListener('click', () => newGridPopup(true));
-
-// newGridSubmitBtn.addEventListener('click', () => {
-//     const userInputWidth = document.querySelector('#grid-width').value;
-//     console.log(`User Input Width: ${userInputWidth}, --grid-width: ${getComputedStyle(document.documentElement).getPropertyValue('--grid-width')}`);
-//     document.documentElement.style.setProperty('--grid-width', userInputWidth);
-//     console.log(`--grid-width now: ${getComputedStyle(document.documentElement).getPropertyValue('--grid-width')}`);
-//     deleteGrid();
-//     createSquares(0, userInputWidth);
-//     newGridPopup(false);
-// });
-
-// newGridCancelBtn.addEventListener('click', () => {
-//     newGridPopup(0);
-//     document.querySelector('#grid-width').value = '';
-// });
+randomModeCheckbox.addEventListener('change', () => {
+    if (randomModeCheckbox.checked) {
+        const checked_bg = getComputedStyle(document.documentElement).getPropertyValue('--checked');
+        randomModeLabel.style.backgroundColor = checked_bg;
+    } else {
+        const unchecked_bg = getComputedStyle(document.documentElement).getPropertyValue('--white-1');
+        randomModeLabel.style.background = unchecked_bg;
+    }
+});
 
 function createSquares(i, width) {
     if (i < width * width) {
@@ -54,7 +50,15 @@ function createSquares(i, width) {
         square.classList.add('flex-square');
         square.addEventListener('mouseover', (e) => {
             console.log(`Square#${i} hovered`);
-            e.target.classList.add('red-bg');
+            if (randomModeCheckbox.checked) {
+                let randomBgColor = generateRandomColor();
+                e.target.style.backgroundColor = randomBgColor;
+                console.log(`Square#e.target.id bg: ${randomBgColor}`);
+            }
+            else {
+                e.target.style.backgroundColor = DEFAULT_HOVER_BG;
+                console.log(`Square#${e.target.id} DEFAULT_HOVER_BG`);
+            }
             let currentOpacity = parseFloat(e.target.style.opacity);
             console.log(`Square#${square.id} opacity = ${currentOpacity}`);
             if (isNaN(currentOpacity)) {
@@ -85,26 +89,32 @@ function newGridPopup(option) { //true to show, false to hide.
         popup.classList.remove("show");
         console.log('Popup hide');
     }
-    //Could use event to hide when mouse is out.
 }
 function deleteGrid() {
     const squareItems = squaresContainer.querySelectorAll('.flex-square');
     squareItems.forEach(el => squaresContainer.removeChild(el));
     console.log('Grid Deleted');
+    return;
 }
 function resetGrid() {
     const squareItems = squaresContainer.querySelectorAll('.flex-square');
     squareItems.forEach(e => {
-        e.classList.remove('red-bg');
-        e.style.opacity = 1;
+        e.style.backgroundColor = DEFAULT_BG;
+        e.style.opacity = 1.35;
     });
     console.log('Grid Reset.')
+    return;
 }
-
+function generateRandomColor() {
+    let red = Math.floor(Math.random() * 255);
+    let green = Math.floor(Math.random() * 255);
+    let blue = Math.floor(Math.random() * 255);
+    return `rgb(${red}, ${green}, ${blue})`;
+}
 /*TODO:
-    Opacity reset when using the Reset Button.
-    For the randomizer we could use Math.random to generate a new rgb code.
-    Style for the popup div and buttons.
     Control the input, e.g. No more than 50 for the grid size.
+    Add keyframes 'enter' for submit.
+    Aria labels.
+    main's outline shows on top of the grid on smaller viewports.
     Remove logs.
 */
