@@ -19,16 +19,26 @@ document.addEventListener('click', (e) => {
             newGridPopup(true);
             break;
         case 'submit-new-grid':
-            const userInputWidth = document.querySelector('#grid-width').value;
-            console.log(`User Input Width: ${userInputWidth}, --grid-width: ${getComputedStyle(document.documentElement).getPropertyValue('--grid-width')}`);
-            document.documentElement.style.setProperty('--grid-width', userInputWidth);
+            const userInputWidth = document.querySelector('#grid-width');
+            if (userInputWidth.value > 70) {
+                window.alert('MAX WIDTH: 70');
+                userInputWidth.value = '';
+                return;
+            }
+            else if (userInputWidth.value < 3) {
+                window.alert('MIN WIDTH: 3');
+                userInputWidth.value = '';
+                return;
+            }
+            console.log(`User Input Width: ${userInputWidth.value}, --grid-width: ${getComputedStyle(document.documentElement).getPropertyValue('--grid-width')}`);
+            document.documentElement.style.setProperty('--grid-width', userInputWidth.value);
             console.log(`--grid-width now: ${getComputedStyle(document.documentElement).getPropertyValue('--grid-width')}`);
             deleteGrid();
-            createSquares(0, userInputWidth);
+            createSquares(0, userInputWidth.value);
             newGridPopup(false);
             break;
         case 'cancel-new-grid':
-            newGridPopup(0);
+            newGridPopup(false);
             document.querySelector('#grid-width').value = '';
             break;
     }
@@ -112,7 +122,6 @@ function generateRandomColor() {
     return `rgb(${red}, ${green}, ${blue})`;
 }
 /*TODO:
-    Control the input, e.g. No more than 50 for the grid size.
     Add keyframes 'enter' for submit.
     Aria labels.
     main's outline shows on top of the grid on smaller viewports.
