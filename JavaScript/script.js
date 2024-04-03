@@ -57,7 +57,7 @@ function createSquares(i, width) {
             e.target.classList.add('red-bg');
             let currentOpacity = parseFloat(e.target.style.opacity);
             console.log(`Square#${square.id} opacity = ${currentOpacity}`);
-            if (isNaN(currentOpacity))  {
+            if (isNaN(currentOpacity)) {
                 e.target.style.opacity = 1;
             }
             else if (currentOpacity > 0) {
@@ -94,11 +94,15 @@ function deleteGrid() {
 }
 function resetGrid() {
     const squareItems = squaresContainer.querySelectorAll('.flex-square');
-    squareItems.forEach(e => e.classList.remove('red-bg'));
+    squareItems.forEach(e => {
+        e.classList.remove('red-bg');
+        e.style.opacity = 1;
+    });
     console.log('Grid Reset.')
 }
 
 /*TODO:
+    Opacity reset when using the Reset Button.
     For the randomizer we could use Math.random to generate a new rgb code.
     Style for the popup div and buttons.
     Control the input, e.g. No more than 50 for the grid size.
