@@ -7,7 +7,7 @@ const DEFAULT_BG = '#d8a841';
 const DEFAULT_HOVER_BG = '#FF3C38'; // Vermillion.
 
 
-createSquares(0, 8); //Initialize with 0 and 8
+createSquares(0, 8); //Initialize with 0 and 8; where 0 is the recursive counter and 8 is the grid width.
 
 document.addEventListener('click', (e) => {
     let target = e.target;
@@ -19,7 +19,7 @@ document.addEventListener('click', (e) => {
             newGridPopup(true);
             break;
         case 'submit-new-grid':
-            const userInputWidth = document.querySelector('#grid-width');
+            const userInputWidth = document.querySelector('#grid-width'); //check if input !NaN.
             if (userInputWidth.value > 70) {
                 window.alert('MAX WIDTH: 70');
                 userInputWidth.value = '';
@@ -129,9 +129,3 @@ function generateRandomColor() {
     let blue = Math.floor(Math.random() * 255);
     return `rgb(${red}, ${green}, ${blue})`;
 }
-/*TODO:
-    Add keyframes 'enter' for submit.
-    Aria labels.
-    main's outline shows on top of the grid on smaller viewports.
-    Remove logs.
-*/

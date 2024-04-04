@@ -178,3 +178,8 @@ main {
         opacity: 1;
     }
 }
+
+/*TODO: 
+    media query to fix popup horizontal position on smaller viewports.
+    main's outline shows on top of the grid on smaller viewports.
+*/
