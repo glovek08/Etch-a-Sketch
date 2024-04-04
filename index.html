@@ -18,19 +18,20 @@
             <button id="reset-grid-btn" class="button">RESET GRID</button>
             <button id="show-popup" class="button">NEW GRID</button>
             <input type="checkbox" id="random-mode-checkbox">
-            <label for="random-mode-checkbox" id="random-mode-label" class="button">RANDOM MODE</label>
-            <div id="new-grid-popup">
+            <label for="random-mode-checkbox" class="button" id="random-mode-label" aria-label="Toggle random mode" tabindex="0">RANDOM MODE</label>
+            <div id="new-grid-popup" role="dialog" aria-labelledby="popup-text-span">
                 <span class="popup-text" id="popup-text-span">GRID WIDTH
-                    <input type="number" id="grid-width" min="1" max="50" />
+                    <input type="number" id="grid-width" min="1" max="50" aria-label="Enter grid width" />
                     <div id="grid-popup-btn-container">
                         <button id="submit-new-grid" class="button">SUBMIT</button>
                         <button id="cancel-new-grid" class="button">CANCEL</button>
                     </div>
                 </span>
             </div>
-        </div>
+        </div> 
         <div id="grid-container">
-        </div>
+
+        </div>     
     </main>
     <footer>
 

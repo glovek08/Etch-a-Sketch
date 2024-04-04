@@ -44,6 +44,15 @@ document.addEventListener('click', (e) => {
     }
 })
 randomModeCheckbox.addEventListener('change', () => {
+    changeCheckboxState();
+});
+randomModeLabel.addEventListener('keydown', (e) => {
+    if (e.key === 'Enter') {
+        randomModeCheckbox.checked = !randomModeCheckbox.checked;
+        changeCheckboxState();
+    }
+});
+function changeCheckboxState() {
     if (randomModeCheckbox.checked) {
         const checked_bg = getComputedStyle(document.documentElement).getPropertyValue('--checked');
         randomModeLabel.style.backgroundColor = checked_bg;
@@ -51,8 +60,7 @@ randomModeCheckbox.addEventListener('change', () => {
         const unchecked_bg = getComputedStyle(document.documentElement).getPropertyValue('--white-1');
         randomModeLabel.style.background = unchecked_bg;
     }
-});
-
+}
 function createSquares(i, width) {
     if (i < width * width) {
         const square = document.createElement('div');
