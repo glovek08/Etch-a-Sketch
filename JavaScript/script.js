@@ -53,12 +53,19 @@ randomModeLabel.addEventListener('keydown', (e) => {
     }
 });
 function changeCheckboxState() {
+    const randomModeStatus = document.querySelector('#random-mode-status');
     if (randomModeCheckbox.checked) {
         const checked_bg = getComputedStyle(document.documentElement).getPropertyValue('--checked');
         randomModeLabel.style.backgroundColor = checked_bg;
+        randomModeLabel.classList.add('checked');
+        randomModeStatus.textContent = 'ON';
+        randomModeStatus.classList.add('on');
     } else {
         const unchecked_bg = getComputedStyle(document.documentElement).getPropertyValue('--white-1');
         randomModeLabel.style.background = unchecked_bg;
+        randomModeLabel.classList.remove('checked');
+        randomModeStatus.textContent = 'OFF';
+        randomModeStatus.classList.remove('on');
     }
 }
 function createSquares(i, width) {

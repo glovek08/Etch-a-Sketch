@@ -4,7 +4,7 @@
     --white-1: #DADAD9; /* platinum */
     --accent-red: #FF3C38; /* vermillion */
     --accent-yellow: #e9cb69; 
-    --checked: #97fc97;
+    --checked: #3d3d3d;
     --squares-bg: #d8a841; /* mustard-yellow-1 */
     --grid-width: 8;
 }
@@ -157,6 +157,18 @@ main {
 }
 .button:active {
     background: var(--accent-red);
+}
+#random-mode-label {
+    text-align: center;
+    width: 180px;
+}
+.checked {
+    outline: 1px solid var(--white-1);
+    color: var(--white-1);
+}
+.on {
+    text-shadow: 0px 0px 1px rgb(0, 142, 17);
+    color: green;
 }
 /* Popup fade animation */
 @-webkit-keyframes fadeIn {
