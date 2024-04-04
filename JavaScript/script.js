@@ -83,7 +83,7 @@ function createSquares(i, width) {
                 e.target.style.opacity = 1;
             }
             else if (currentOpacity > 0) {
-                currentOpacity -= 0.35;
+                currentOpacity -= 0.15;
             } else if (currentOpacity <= 0) {
                 currentOpacity = 0;
             }
